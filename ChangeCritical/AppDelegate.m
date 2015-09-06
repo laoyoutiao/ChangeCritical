@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"10.png" forKey:@"photoname"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ImageClass"];
     return YES;
 }
 

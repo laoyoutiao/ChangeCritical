@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  View1Controller.h
 //  ChangeCritical
 //
 //  Created by 玉文辉 on 15/9/5.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface View1Controller : UIViewController
 
 @end
-
