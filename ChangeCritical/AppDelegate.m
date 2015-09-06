@@ -19,7 +19,10 @@
     // Override point for customization after application launch.
     
     [[NSUserDefaults standardUserDefaults] setObject:@"10.png" forKey:@"photoname"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ImageClass"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"navigationcolor"];
+    // 0 白色
+    // 1 黑色
+    // 2 红色
     return YES;
 }
 

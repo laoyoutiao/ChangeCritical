@@ -11,8 +11,8 @@
 @interface ChangeView : NSObject
 
 +(ChangeView *)sharedInstance;
-- (void)changeImageViewObjectName:(NSArray *)objectname ImageName:(NSString *)imagename;
-- (void)getClass:(id)classid ObjectName:(NSArray *)objectname;
+- (void)changeImageViewImageName:(NSString *)imagename  Color:(NSInteger)color;
+- (void)getClass:(id)classid;
 - (void)deleteobj:(id)classid;
 - (void)removeobj;
 @end

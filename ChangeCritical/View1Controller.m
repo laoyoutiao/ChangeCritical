@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSString *photoname;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (strong, nonatomic) UIImageView *imageview;
+@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIColor *buttontextcolor;
 @property (strong, nonatomic) ChangeView *image;
 @end
 
@@ -21,14 +23,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self Color];
+    
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, screensize.width, 100)];
     _photoname = [[NSUserDefaults standardUserDefaults] objectForKey:@"photoname"];
     [imageview setImage:[UIImage imageNamed:_photoname]];
     [self.view addSubview:imageview];
-    
+        
     _image = [ChangeView sharedInstance];
-    [_image getClass:self ObjectName:nil];
+    [_image getClass:self];
+}
+
+- (void)Color
+{
+    NSInteger i = [[[NSUserDefaults standardUserDefaults] objectForKey:@"navigationcolor"] integerValue];
+    switch (i) {
+        case 0:
+            _color = [UIColor whiteColor];
+            _buttontextcolor = [UIColor blackColor];
+            break;
+            
+        case 1:
+            _color = [UIColor blackColor];
+            _buttontextcolor = [UIColor whiteColor];
+            break;
+            
+        case 2:
+            _color = [UIColor redColor];
+            _buttontextcolor = [UIColor blueColor];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self.navigationController.navigationBar setBarTintColor:_color];
+    self.view.backgroundColor = _color;
+    [_changeBtn setTintColor:_buttontextcolor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -44,8 +76,7 @@
 }
 
 - (IBAction)click:(id)sender {
-    NSArray *array = [[NSArray alloc] initWithObjects:_image, nil];
-    [_image changeImageViewObjectName:array ImageName:@"2.png"];
+    [_image changeImageViewImageName:@"2.png" Color:1];
 }
 
 /*

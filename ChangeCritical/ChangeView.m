@@ -27,28 +27,57 @@
     return sharedManager;
 }
 
-- (void)getClass:(id)classid ObjectName:(NSArray *)objectname
+- (void)getClass:(id)classid
 {
     [self saveClass:classid];
 }
 
-- (void)changeImageViewObjectName:(NSArray *)objectname ImageName:(NSString *)imagename
+- (void)changeImageViewImageName:(NSString *)imagename Color:(NSInteger)color
 {
     [[NSUserDefaults standardUserDefaults] setObject:imagename forKey:@"photoname"];
-    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[[NSUserDefaults standardUserDefaults] objectForKey:@"photoname"]]];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",color] forKey:@"navigationcolor"];
+    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imagename]];
     
-    NSLog(@"%@",_objectArray);
     for(int n = 0; n < [_objectArray count]; n++)
     {
         unsigned int count = 0;
         Ivar *members = class_copyIvarList([[_objectArray objectAtIndex:n] class], &count);
-        for (int i = 0; i < count; i++) {
-            Ivar var = members[i];
-            const char *memberName = ivar_getName(var);
-            NSLog(@"%d  %s--",i, memberName);
-        }
+//        for (int i = 0; i < count; i++) {
+//            Ivar var = members[i];
+//            const char *memberName = ivar_getName(var);
+//            NSLog(@"%d  %s--",i, memberName);
+//        }
         Ivar m_name = members[2];  //自由属性获取
         object_setIvar([_objectArray objectAtIndex:n] ,m_name,imageview);
+        
+        
+        Ivar m_color = members[3];
+        UIColor *navicolor;
+        UIColor *buttontextcolor;
+        switch (color) {
+            case 0:
+                navicolor = [UIColor whiteColor];
+                buttontextcolor = [UIColor blackColor];
+                break;
+                
+            case 1:
+                navicolor = [UIColor blackColor];
+                buttontextcolor = [UIColor whiteColor];
+                break;
+                
+            case 2:
+                navicolor = [UIColor redColor];
+                buttontextcolor = [UIColor blueColor];
+                break;
+                
+            default:
+                break;
+        }
+        object_setIvar([_objectArray objectAtIndex:n] ,m_color,navicolor);
+        
+        Ivar m_buttontextcolor = members[4];
+        object_setIvar([_objectArray objectAtIndex:n] ,m_buttontextcolor,buttontextcolor);
+        
         [[_objectArray objectAtIndex:n] viewDidLoad];
     }
 }
