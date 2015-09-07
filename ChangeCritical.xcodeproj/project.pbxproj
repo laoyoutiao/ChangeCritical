@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		5BE637C71B9AEBEA00804D7D /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
 		5BE637C91B9AEBF200804D7D /* zhanwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanwei.png; sourceTree = "<group>"; };
+		5BEC4AB51B9D855700BABA24 /* MyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
 		5BF94E8B1B9BCE4300D84197 /* ChangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeView.h; sourceTree = "<group>"; };
 		5BF94E8C1B9BCE4300D84197 /* ChangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeView.m; sourceTree = "<group>"; };
 		5BFE659D1B9AE24C00F01E30 /* ChangeCritical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeCritical.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +114,7 @@
 		5BFE659F1B9AE24C00F01E30 /* ChangeCritical */ = {
 			isa = PBXGroup;
 			children = (
+				5BEC4AB51B9D855700BABA24 /* MyHeader.h */,
 				5BFE65A41B9AE24C00F01E30 /* AppDelegate.h */,
 				5BFE65A51B9AE24C00F01E30 /* AppDelegate.m */,
 				5BFE65A71B9AE24C00F01E30 /* ViewController.h */,

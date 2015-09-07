@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>77FA7CE2-1863-45D6-B2DD-C2911B1D9698</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ChangeCritical</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E114DCAF1642B0B9A0B707CB0460F0FD2D7C8726</key>
 		<string>https://github.com/laoyoutiao/ChangeCritical.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ChangeCritical.xcodeproj</string>
+	<string>ChangeCritical.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E114DCAF1642B0B9A0B707CB0460F0FD2D7C8726</key>
