@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 #import "ChangeView.h"
+#import "MyHeader.h"
 #define screensize [UIScreen mainScreen].bounds.size
 
-@interface ViewController ()
+@interface ViewController ()<ChangeViewDelegate>
 @property (strong, nonatomic) NSString *photoname;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (strong, nonatomic) UIImageView *imageview;
@@ -33,7 +34,13 @@
     
     _image = [ChangeView sharedInstance];
     [_image getClass:self];
+    _image.delegate = self;
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        _color = [UIColor redColor];
+    });
+    
+//    NSLog(@"%@",[NSProcessInfo processInfo].environment);
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -73,5 +80,12 @@
 - (IBAction)click:(id)sender {
     [_image changeImageViewImageName:@"1.png" Color:0];
 }
+
+- (void)changedoing //delegate
+{
+    NSLog(@"doing");
+}
+
+
 
 @end

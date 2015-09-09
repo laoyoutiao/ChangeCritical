@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChangeView : NSObject
+@protocol ChangeViewDelegate
+
+@required
+
+- (void)changedoing;
+
+@end
+
+@interface ChangeView : UIViewController
+
+@property (retain, nonatomic) id<ChangeViewDelegate> delegate;
 
 +(ChangeView *)sharedInstance;
 - (void)changeImageViewImageName:(NSString *)imagename  Color:(NSInteger)color;

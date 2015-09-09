@@ -8,9 +8,11 @@
 
 #import "ChangeView.h"
 #import <objc/runtime.h>
+#import "MyHeader.h"
 
 @interface ChangeView ()
 @property (strong, nonatomic) NSMutableArray *objectArray;
+@property (nonatomic) BOOL changesuccess;
 @end
 
 @implementation ChangeView
@@ -18,7 +20,6 @@
 + (ChangeView *)sharedInstance
 {
     static ChangeView *sharedManager;
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[ChangeView alloc] init];
@@ -30,6 +31,7 @@
 - (void)getClass:(id)classid
 {
     [self saveClass:classid];
+    
 }
 
 - (void)changeImageViewImageName:(NSString *)imagename Color:(NSInteger)color
@@ -78,7 +80,20 @@
         Ivar m_buttontextcolor = members[4];
         object_setIvar([_objectArray objectAtIndex:n] ,m_buttontextcolor,buttontextcolor);
         
-        [[_objectArray objectAtIndex:n] viewDidLoad];
+        unsigned int countn = 0;
+        Method *method = class_copyMethodList([[_objectArray objectAtIndex:n] class], &countn);
+        for (int k = 0; k < countn; k++) {
+            Method me = method[k];
+//            SEL str = method_getName(me);
+//            NSLog(@"%d  %s--",k, sel_getName(str));
+            if (method_getName(me) == @selector(changedoing) && !_changesuccess) {
+                Method swizzledMethod = class_getInstanceMethod([self class], @selector(changedoingsomething));
+                method_exchangeImplementations(me, swizzledMethod);
+                _changesuccess = YES;
+            }
+        }
+        
+        [_delegate changedoing];
     }
 }
 
@@ -98,6 +113,7 @@
             [_objectArray insertObject:classid atIndex:0];
         }
     }
+//    NSLogArray(@"%@",_objectArray);
 //    NSLog(@"className:%@", _objectArray);
 }
 
@@ -109,6 +125,13 @@
 - (void)removeobj
 {
     _objectArray = nil;
+}
+
+- (void)changedoingsomething
+{
+    NSLog(@"success");
+    NSLog(@"%@",self);
+    [self viewDidLoad];
 }
 
 /*
