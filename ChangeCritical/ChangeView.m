@@ -13,6 +13,8 @@
 @interface ChangeView ()
 @property (strong, nonatomic) NSMutableArray *objectArray;
 @property (nonatomic) BOOL changesuccess;
+@property (strong, nonatomic) UILabel *titlelabel;
+@property (strong, nonatomic) NSString *message;
 @end
 
 @implementation ChangeView
@@ -30,7 +32,29 @@
 
 - (void)getClass:(id)classid
 {
-    [self saveClass:classid];
+//    [self saveClass:classid];
+    UIAlertView *alt = [[UIAlertView alloc] initWithTitle:@"123" message:@"123" delegate:self cancelButtonTitle:@"1" otherButtonTitles: nil];
+    unsigned int countnt = 0;
+    Method *methodalt = class_copyMethodList([alt class], &countnt);
+    Method me = methodalt[7];
+    Method swizzledMethod = class_getInstanceMethod([self class], @selector(youtiaotitlelabel));
+//    method_exchangeImplementations(me, swizzledMethod);
+    IMP imp = method_getImplementation(me);
+    method_setImplementation(swizzledMethod, imp);
+    [alt show];
+    //        for (int k = 0; k < countnt; k++) {
+    //            Method me = methodalt[k];
+    //            SEL str = method_getName(me);
+    //            NSLog(@"%d  %s--",k, sel_getName(str));  7
+    //        }
+    
+    
+    //        Ivar *membersalt = class_copyIvarList([alt class], &countnt);
+    //                for (int i = 0; i < countnt; i++) {
+    //                    Ivar var = membersalt[i];
+    //                    const char *memberName = ivar_getName(var);
+    //                    NSLog(@"%d  %s--",i, memberName);
+    //                }
     
 }
 
@@ -80,21 +104,33 @@
         Ivar m_buttontextcolor = members[4];
         object_setIvar([_objectArray objectAtIndex:n] ,m_buttontextcolor,buttontextcolor);
         
+        NSLog(@"%@",[_objectArray objectAtIndex:n]);
         unsigned int countn = 0;
         Method *method = class_copyMethodList([[_objectArray objectAtIndex:n] class], &countn);
         for (int k = 0; k < countn; k++) {
             Method me = method[k];
 //            SEL str = method_getName(me);
 //            NSLog(@"%d  %s--",k, sel_getName(str));
-            if (method_getName(me) == @selector(changedoing) && !_changesuccess) {
-                Method swizzledMethod = class_getInstanceMethod([self class], @selector(changedoingsomething));
-                method_exchangeImplementations(me, swizzledMethod);
-                _changesuccess = YES;
+            if (method_getName(me) == @selector(changedoing)) {
+                NSLog(@"%u",_changesuccess);
+                if (!_changesuccess) {
+                    Method originalMethod = class_getInstanceMethod([[_objectArray objectAtIndex:n] class], @selector(changedoing));
+                    Method swizzledMethod = class_getInstanceMethod([self class], @selector(changedoingsomething));
+                    method_exchangeImplementations(originalMethod, swizzledMethod);
+                    _changesuccess = YES;
+                }
             }
         }
+
         
         [_delegate changedoing];
     }
+}
+
+- (void)youtiaotitlelabel
+{
+    NSLog(@"success");
+//    _titlelabel.textAlignment = NSTextAlignmentLeft;
 }
 
 - (void)saveClass:(id)classid 
