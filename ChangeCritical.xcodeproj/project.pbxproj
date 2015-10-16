@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B3B96951BA957D200C57781 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3B96941BA957D200C57781 /* EventKit.framework */; };
 		5BE637C81B9AEBEA00804D7D /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE637C71B9AEBEA00804D7D /* 10.png */; };
 		5BE637CA1B9AEBF200804D7D /* zhanwei.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BE637C91B9AEBF200804D7D /* zhanwei.png */; };
 		5BF94E8D1B9BCE4300D84197 /* ChangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF94E8C1B9BCE4300D84197 /* ChangeView.m */; };
@@ -42,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B3B96941BA957D200C57781 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		5BE637C71B9AEBEA00804D7D /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
 		5BE637C91B9AEBF200804D7D /* zhanwei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanwei.png; sourceTree = "<group>"; };
 		5BEC4AB51B9D855700BABA24 /* MyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3B96951BA957D200C57781 /* EventKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +95,6 @@
 		5BFE65941B9AE24C00F01E30 = {
 			isa = PBXGroup;
 			children = (
-				5B3B96941BA957D200C57781 /* EventKit.framework */,
 				5BFE65C61B9AE73600F01E30 /* Resource */,
 				5BFE659F1B9AE24C00F01E30 /* ChangeCritical */,
 				5BFE65B91B9AE24C00F01E30 /* ChangeCriticalTests */,

@@ -10,7 +10,7 @@
 #import "ChangeView.h"
 #define screensize [UIScreen mainScreen].bounds.size
 
-@interface View1Controller ()<ChangeViewDelegate>
+@interface View1Controller ()
 @property (strong, nonatomic) NSString *photoname;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (strong, nonatomic) UIImageView *imageview;
@@ -33,7 +33,6 @@
         
     _image = [ChangeView sharedInstance];
     [_image getClass:self];
-    _image.delegate = self;
 }
 
 - (void)Color
@@ -58,7 +57,7 @@
         default:
             break;
     }
-    random();
+    
     [self.navigationController.navigationBar setBarTintColor:_color];
     self.view.backgroundColor = _color;
     [_changeBtn setTintColor:_buttontextcolor];
@@ -78,11 +77,6 @@
 
 - (IBAction)click:(id)sender {
     [_image changeImageViewImageName:@"2.png" Color:1];
-}
-
-- (void)changedoing
-{
-    
 }
 
 /*

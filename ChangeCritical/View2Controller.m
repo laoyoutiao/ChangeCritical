@@ -10,7 +10,7 @@
 #import "ChangeView.h"
 #define screensize [UIScreen mainScreen].bounds.size
 
-@interface View2Controller ()<ChangeViewDelegate>
+@interface View2Controller ()
 @property (strong, nonatomic) NSString *photoname;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (strong, nonatomic) UIImageView *imageview;
@@ -33,7 +33,6 @@
         
     _image = [ChangeView sharedInstance];
     [_image getClass:self];
-    _image.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -80,10 +79,6 @@
     [_image changeImageViewImageName:@"3.png" Color:2];
 }
 
-- (void)changedoing
-{
-    
-}
 /*
 #pragma mark - Navigation
 
